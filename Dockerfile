@@ -1,9 +1,19 @@
-FROM node:20-alpine AS build
+FROM node:19-alpine as build
 
-WORKDIR /usr/local/app
+WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package*.json ./
+
+RUN npm ci --legacy-peer-deps
+
 COPY . .
 
-CMD ["npm", "start"]
+RUN npm run build
+
+FROM nginx:1.21.0-alpine
+
+COPY ngnix.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build /app/build /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
