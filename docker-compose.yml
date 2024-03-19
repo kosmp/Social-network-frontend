@@ -1,0 +1,17 @@
+version: '3'
+services:
+  react:
+    container_name: react
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:${APP_PORT}
+    networks:
+      - user-management-service_app-network
+      - innoter_innoter-network
+networks:
+  user-management-service_app-network:
+    external: true
+  innoter_innoter-network:
+    external: true
