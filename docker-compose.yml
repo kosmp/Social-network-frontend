@@ -10,7 +10,7 @@ services:
       - innoter_media_volume:/usr/src/app/innoter_media
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 4200:3000
+      - ${FRONTEND_APP_PORT}:3000
     networks:
       - innoter_innoter-network
 

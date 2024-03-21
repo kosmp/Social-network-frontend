@@ -6,4 +6,4 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - 4201:3000
+      - ${FRONTEND_APP_PORT}:3000
