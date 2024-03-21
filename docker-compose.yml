@@ -1,7 +1,7 @@
 version: '3'
 services:
-  react:
-    container_name: react
+  innoter-frontend:
+    container_name: innoter-frontend
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,20 +10,15 @@ services:
       - innoter_media_volume:/usr/src/app/innoter_media
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 4200:${APP_PORT}
+      - 4200:3000
     networks:
-      - user-management-service_app-network
       - innoter_innoter-network
+
 networks:
-  user-management-service_app-network:
-    external: true
   innoter_innoter-network:
     external: true
 
 volumes:
-  database_volume:
-  celery_logs:
-  build_volume:
   innoter_static_volume:
     external: true
   innoter_media_volume:

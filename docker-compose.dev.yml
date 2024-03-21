@@ -1,0 +1,9 @@
+version: '3'
+services:
+  innoter-frontend-dev:
+    container_name: innoter-frontend-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4201:3000
