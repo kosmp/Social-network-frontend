@@ -12,7 +12,7 @@ RUN npm run build
 
 FROM nginx:1.21.0-alpine
 
-COPY ngnix.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/build /usr/share/nginx/html
 
